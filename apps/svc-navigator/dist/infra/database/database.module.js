@@ -8,26 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
-const pg_1 = require("pg");
-const dbProvider = {
-    provide: 'DATABASE_POOL',
-    useFactory: () => {
-        return new pg_1.Pool({
-            connectionString: process.env.DATABASE_URL,
-            max: 10, //  max pool clients
-            idleTimeoutMillis: 30000,
-            connectionTimeoutMillis: 2000,
-        });
-    },
-};
+const database_provider_1 = require("./database.provider");
 let DatabaseModule = class DatabaseModule {
 };
 exports.DatabaseModule = DatabaseModule;
 exports.DatabaseModule = DatabaseModule = __decorate([
     (0, common_1.Global)(),
     (0, common_1.Module)({
-        providers: [dbProvider],
-        exports: [dbProvider],
+        providers: [database_provider_1.drizzleProvider],
+        exports: [database_provider_1.drizzleProvider],
     })
 ], DatabaseModule);
 //# sourceMappingURL=database.module.js.map
